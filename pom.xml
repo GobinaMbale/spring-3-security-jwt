@@ -76,7 +76,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--Implement cache-->
+		<!--Starter cache and Starter redis-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
@@ -86,6 +86,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 			<version>2.4.3</version>
+		</dependency>
+
+		<!--Starter validator-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 	</dependencies>
 

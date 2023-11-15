@@ -4,6 +4,7 @@ import com.eda.security.entity.UserEntity;
 import com.eda.security.service.UserService;
 import com.eda.security.request.ChangePasswordRequest;
 import com.eda.security.utils.HttpResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,8 +26,8 @@ public class UserController {
 
     @PatchMapping
     public ResponseEntity<HttpResponse> changePassword(
-          @RequestBody ChangePasswordRequest request,
-          Principal connectedUser
+            @RequestBody @Valid ChangePasswordRequest request,
+            Principal connectedUser
     ) {
         Boolean isSuccess = service.changePassword(request, connectedUser);
         return ResponseEntity.ok().body(

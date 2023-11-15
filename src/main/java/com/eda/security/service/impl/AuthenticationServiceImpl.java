@@ -10,6 +10,7 @@ import com.eda.security.repository.TokenRepository;
 import com.eda.security.entity.enumerated.TokenType;
 import com.eda.security.repository.UserRepository;
 import com.eda.security.service.AuthenticationService;
+import com.eda.security.validator.ObjectsValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -30,9 +31,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
   private final PasswordEncoder passwordEncoder;
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
+  private final ObjectsValidator<RegisterRequest> registerRequestObjectsValidator;
 
   @Override
   public AuthenticationResponse register(RegisterRequest request) {
+    registerRequestObjectsValidator.validate(request);
     var user = UserEntity.builder()
         .firstname(request.getFirstname())
         .lastname(request.getLastname())

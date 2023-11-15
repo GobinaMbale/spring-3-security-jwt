@@ -7,9 +7,12 @@ import com.eda.security.request.RegisterRequest;
 import com.eda.security.utils.HttpResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -29,7 +33,7 @@ public class AuthenticationController {
 
   @PostMapping("/register")
   public ResponseEntity<HttpResponse> register(
-      @RequestBody RegisterRequest request
+          @RequestBody @Valid RegisterRequest request
   ) {
     AuthenticationResponse response = service.register(request);
     return ResponseEntity.created(URI.create("")).body(
@@ -42,9 +46,10 @@ public class AuthenticationController {
                     .build()
     );
   }
+
   @PostMapping("/authenticate")
   public ResponseEntity<HttpResponse> authenticate(
-      @RequestBody AuthenticationRequest request
+          @RequestBody @Valid AuthenticationRequest request
   ) {
     AuthenticationResponse response = service.authenticate(request);
     return ResponseEntity.ok().body(
