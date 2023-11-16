@@ -1,15 +1,8 @@
 package com.eda.security;
 
-import com.eda.security.service.AuthenticationService;
-import com.eda.security.request.RegisterRequest;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-
-import static com.eda.security.entity.enumerated.Role.ADMIN;
-import static com.eda.security.entity.enumerated.Role.MANAGER;
 
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")

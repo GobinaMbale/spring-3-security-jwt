@@ -1,15 +1,12 @@
 package com.eda.security.exception;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Set;
 
-@Data
+@Getter
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class ObjectNotValidException extends RuntimeException {
-
-    private final Set<String> errorMesdages;
+    private final Set<String> errorMessages;
 }

@@ -1,4 +1,4 @@
-package com.eda.security.request;
+package com.eda.security.dto.request;
 
 import com.eda.security.entity.enumerated.Role;
 import jakarta.validation.constraints.NotEmpty;

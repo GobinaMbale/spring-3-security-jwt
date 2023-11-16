@@ -1,4 +1,4 @@
-package com.eda.security.request;
+package com.eda.security.dto.request;
 
 import lombok.Builder;
 import lombok.Getter;

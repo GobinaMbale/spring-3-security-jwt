@@ -1,5 +1,8 @@
-package com.eda.security.book;
+package com.eda.security.controller;
 
+import com.eda.security.entity.BookEntity;
+import com.eda.security.dto.request.BookRequest;
+import com.eda.security.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +29,7 @@ public class BookController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Book>> findAllBooks() {
+    public ResponseEntity<List<BookEntity>> findAllBooks() {
         return ResponseEntity.ok(service.findAll());
     }
 }

@@ -1,7 +1,7 @@
 package com.eda.security.service;
 
 import com.eda.security.entity.UserEntity;
-import com.eda.security.request.ChangePasswordRequest;
+import com.eda.security.dto.request.ChangePasswordRequest;
 
 import java.security.Principal;
 

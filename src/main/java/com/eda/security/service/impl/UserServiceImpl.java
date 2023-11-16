@@ -2,7 +2,7 @@ package com.eda.security.service.impl;
 
 import com.eda.security.entity.UserEntity;
 import com.eda.security.repository.UserRepository;
-import com.eda.security.request.ChangePasswordRequest;
+import com.eda.security.dto.request.ChangePasswordRequest;
 import com.eda.security.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

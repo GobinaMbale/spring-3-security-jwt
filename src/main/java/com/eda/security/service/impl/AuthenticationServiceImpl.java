@@ -1,8 +1,8 @@
 package com.eda.security.service.impl;
 
-import com.eda.security.request.AuthenticationRequest;
-import com.eda.security.auth.AuthenticationResponse;
-import com.eda.security.request.RegisterRequest;
+import com.eda.security.dto.request.AuthenticationRequest;
+import com.eda.security.dto.response.AuthenticationResponse;
+import com.eda.security.dto.request.RegisterRequest;
 import com.eda.security.jwt.JwtService;
 import com.eda.security.entity.UserEntity;
 import com.eda.security.entity.TokenEntity;

@@ -1,4 +1,4 @@
-package com.eda.security.auth;
+package com.eda.security.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

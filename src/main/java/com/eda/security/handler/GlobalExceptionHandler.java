@@ -27,6 +27,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleException(ObjectNotValidException exception) {
         return ResponseEntity
                 .badRequest()
-                .body(exception.getErrorMesdages());
+                .body(exception.getErrorMessages());
     }
 }

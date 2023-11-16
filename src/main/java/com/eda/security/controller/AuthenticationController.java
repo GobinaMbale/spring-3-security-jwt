@@ -1,18 +1,17 @@
 package com.eda.security.controller;
 
-import com.eda.security.request.AuthenticationRequest;
-import com.eda.security.auth.AuthenticationResponse;
+import com.eda.security.dto.request.AuthenticationRequest;
+import com.eda.security.dto.response.AuthenticationResponse;
 import com.eda.security.service.AuthenticationService;
-import com.eda.security.request.RegisterRequest;
+import com.eda.security.dto.request.RegisterRequest;
 import com.eda.security.utils.HttpResponse;
+import com.eda.security.utils.MethodUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.net.URI;
-import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -37,13 +33,8 @@ public class AuthenticationController {
   ) {
     AuthenticationResponse response = service.register(request);
     return ResponseEntity.created(URI.create("")).body(
-            HttpResponse.builder()
-                    .timeStamp(LocalDateTime.now().toString())
-                    .data(Map.of("register", response))
-                    .message("User Register")
-                    .status(HttpStatus.CREATED)
-                    .statusCode(HttpStatus.CREATED.value())
-                    .build()
+            MethodUtils.responseApi("User Register", "register",
+                    response, HttpStatus.CREATED, HttpStatus.CREATED.value())
     );
   }
 
@@ -53,13 +44,8 @@ public class AuthenticationController {
   ) {
     AuthenticationResponse response = service.authenticate(request);
     return ResponseEntity.ok().body(
-            HttpResponse.builder()
-                    .timeStamp(LocalDateTime.now().toString())
-                    .data(Map.of("authenticate", response))
-                    .message("Authentication with success")
-                    .status(HttpStatus.OK)
-                    .statusCode(HttpStatus.OK.value())
-                    .build()
+            MethodUtils.responseApi("Authentication with success", "authenticate",
+                    response, HttpStatus.OK, HttpStatus.OK.value())
     );
   }
 
