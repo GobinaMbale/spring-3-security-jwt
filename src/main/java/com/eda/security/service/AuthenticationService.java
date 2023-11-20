@@ -1,5 +1,6 @@
 package com.eda.security.service;
 
+import com.eda.security.dto.request.VerificationRequest;
 import com.eda.security.dto.response.AuthenticationResponse;
 import com.eda.security.dto.request.AuthenticationRequest;
 import com.eda.security.dto.request.RegisterRequest;
@@ -11,6 +12,8 @@ import java.io.IOException;
 public interface AuthenticationService {
 
     AuthenticationResponse register(RegisterRequest request);
+    AuthenticationResponse registerAndGenerateQrCode(RegisterRequest request);
     AuthenticationResponse authenticate(AuthenticationRequest request);
     void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException;
+    AuthenticationResponse verifyCode(VerificationRequest verificationRequest);
 }

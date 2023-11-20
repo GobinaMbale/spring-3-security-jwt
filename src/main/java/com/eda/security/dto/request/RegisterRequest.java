@@ -27,4 +27,5 @@ public class RegisterRequest {
   @NotNull(message = "The password should not be not null")
   private String password;
   private Role role;
+  private boolean mfaEnabled;
 }

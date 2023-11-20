@@ -31,6 +31,8 @@ public class UserEntity implements UserDetails {
   private String lastname;
   private String email;
   private String password;
+  private boolean mfaEnabled;
+  private String secret;
 
   @Enumerated(EnumType.STRING)
   private Role role;

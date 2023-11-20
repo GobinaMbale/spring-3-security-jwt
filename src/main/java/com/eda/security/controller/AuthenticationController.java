@@ -1,6 +1,7 @@
 package com.eda.security.controller;
 
 import com.eda.security.dto.request.AuthenticationRequest;
+import com.eda.security.dto.request.VerificationRequest;
 import com.eda.security.dto.response.AuthenticationResponse;
 import com.eda.security.service.AuthenticationService;
 import com.eda.security.dto.request.RegisterRequest;
@@ -38,6 +39,17 @@ public class AuthenticationController {
     );
   }
 
+  @PostMapping("/register-with-qr-code")
+  public ResponseEntity<?> registerWithQrCode(
+          @RequestBody RegisterRequest request
+  ) {
+    var response = service.registerAndGenerateQrCode(request);
+    if (request.isMfaEnabled()) {
+      return ResponseEntity.ok(response);
+    }
+    return ResponseEntity.accepted().build();
+  }
+
   @PostMapping("/authenticate")
   public ResponseEntity<HttpResponse> authenticate(
           @RequestBody @Valid AuthenticationRequest request
@@ -57,5 +69,10 @@ public class AuthenticationController {
     service.refreshToken(request, response);
   }
 
-
+  @PostMapping("/verify")
+  public ResponseEntity<?> verifyCode(
+          @RequestBody VerificationRequest verificationRequest
+  ) {
+    return ResponseEntity.ok(service.verifyCode(verificationRequest));
+  }
 }
